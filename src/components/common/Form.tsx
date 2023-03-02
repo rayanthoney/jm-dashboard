@@ -150,7 +150,7 @@ const Form = ({
                 color: "#11142d",
               }}
             >
-              Enter location
+              Enter Location
             </FormHelperText>
             <TextField
               fullWidth
@@ -165,9 +165,30 @@ const Form = ({
           <Stack direction="column" gap={1} justifyContent="center" mb={2}
           >
             <Stack direction="row" gap={2}>
-              <Typography>Property Photo</Typography>
+              <Typography color="#11142d" fontSize={16} fontWeight={500} my="10px">Property Photo</Typography>
+
+              <Button component="label" sx={{ width: 'fit-content', color: "#2ed480", textTransform: 'capitalize', fontSize: 16}}>
+                Upload *
+                <input 
+                hidden
+                accept="image/*"
+                type="file"
+                onChange={(e) => {
+                  // @ts-ignore
+                  handleImageChange(e.target.files[0])
+                }}
+                />
+              </Button>
             </Stack>
+            <Typography fontSize={14} color="#808191" sx={{wordBreak: 'break-all'}}>{propertyImage?.name}</Typography>
           </Stack>
+
+          <CustomButton
+            type="submit"
+            title={formLoading ? 'Submitting...' : 'Submit'}
+            backgroundColor="#475be8"
+            color="#fcfcfc"
+          />
         </form>
       </Box>
     </Box>
